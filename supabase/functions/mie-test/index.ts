@@ -21,14 +21,10 @@ Deno.serve(async (req) => {
       throw new Error('MIE credentials not configured')
     }
 
-    // Build authentication token XML
-    const tokenXml = `<xml>
-      <Token>
-        <UserName>${username}</UserName>
-        <Password>${password}</Password>
-        <Source>SMARTWEB</Source>
-      </Token>
-    </xml>`
+    // Build authentication token XML - pass as escaped string
+    const tokenXml = `&lt;xml&gt;&lt;Token&gt;&lt;UserName&gt;${username}&lt;/UserName&gt;&lt;Password&gt;${password}&lt;/Password&gt;&lt;Source&gt;SMARTWEB&lt;/Source&gt;&lt;/Token&gt;&lt;/xml&gt;`
+    
+    console.log('Token XML:', tokenXml)
 
     // Build SOAP envelope for ksoGetItemTypes
     const soapEnvelope = `<?xml version="1.0" encoding="utf-8"?>
@@ -42,6 +38,7 @@ Deno.serve(async (req) => {
   </soap:Body>
 </soap:Envelope>`
 
+    console.log('Complete SOAP envelope:', soapEnvelope)
     console.log('Sending SOAP request to MIE...')
 
     // Send SOAP request to QA endpoint
