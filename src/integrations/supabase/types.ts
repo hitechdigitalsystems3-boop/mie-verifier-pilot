@@ -14,7 +14,101 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      verification_requests: {
+        Row: {
+          additional_notes: string | null
+          client_key: string
+          created_at: string
+          date_of_birth: string
+          first_name: string
+          id: string
+          id_number: string
+          remote_request_id: string | null
+          status: string
+          surname: string
+          updated_at: string
+          verification_types: string[]
+        }
+        Insert: {
+          additional_notes?: string | null
+          client_key: string
+          created_at?: string
+          date_of_birth: string
+          first_name: string
+          id?: string
+          id_number: string
+          remote_request_id?: string | null
+          status?: string
+          surname: string
+          updated_at?: string
+          verification_types?: string[]
+        }
+        Update: {
+          additional_notes?: string | null
+          client_key?: string
+          created_at?: string
+          date_of_birth?: string
+          first_name?: string
+          id?: string
+          id_number?: string
+          remote_request_id?: string | null
+          status?: string
+          surname?: string
+          updated_at?: string
+          verification_types?: string[]
+        }
+        Relationships: []
+      }
+      verification_results: {
+        Row: {
+          completed_at: string
+          created_at: string
+          extended_info: Json | null
+          id: string
+          pdf_report_url: string | null
+          request_id: string
+          result_code: string | null
+          result_description: string | null
+          risk_level: string | null
+          supplier: string | null
+          verification_type: string
+        }
+        Insert: {
+          completed_at?: string
+          created_at?: string
+          extended_info?: Json | null
+          id?: string
+          pdf_report_url?: string | null
+          request_id: string
+          result_code?: string | null
+          result_description?: string | null
+          risk_level?: string | null
+          supplier?: string | null
+          verification_type: string
+        }
+        Update: {
+          completed_at?: string
+          created_at?: string
+          extended_info?: Json | null
+          id?: string
+          pdf_report_url?: string | null
+          request_id?: string
+          result_code?: string | null
+          result_description?: string | null
+          risk_level?: string | null
+          supplier?: string | null
+          verification_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "verification_results_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "verification_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
