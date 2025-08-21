@@ -49,7 +49,7 @@ Deno.serve(async (req) => {
       method: 'POST',
       headers: {
         'Content-Type': 'text/xml; charset=utf-8',
-        'SOAPAction': '"http://www.mie.co.za/ksoGetItemTypes"'
+        'SOAPAction': 'http://www.mie.co.za/ksoGetItemTypes'
       },
       body: soapEnvelope
     })
