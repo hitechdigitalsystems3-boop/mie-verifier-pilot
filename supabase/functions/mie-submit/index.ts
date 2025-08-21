@@ -82,16 +82,10 @@ Deno.serve(async (req) => {
     // Build authentication token XML - pass as escaped string
     const tokenXml = `&lt;xml&gt;&lt;Token&gt;&lt;UserName&gt;${username}&lt;/UserName&gt;&lt;Password&gt;${password}&lt;/Password&gt;&lt;Source&gt;SMARTWEB&lt;/Source&gt;&lt;/Token&gt;&lt;/xml&gt;`
 
-    // Build item list
+    // Build item list - properly escaped for inclusion in escaped XML
     const itemListXml = verificationTypes.map((type: string, index: number) => {
       const itemCode = VERIFICATION_TYPE_MAPPING[type] || type
-      return `
-        <Item>
-          <RemoteItemKey>${remoteRequestId}_${index}</RemoteItemKey>
-          <ItemTypeCode>${itemCode}</ItemTypeCode>
-          <Indemnity>true</Indemnity>
-          <ItemInputGroupList/>
-        </Item>`
+      return `&lt;Item&gt;&lt;RemoteItemKey&gt;${remoteRequestId}_${index}&lt;/RemoteItemKey&gt;&lt;ItemTypeCode&gt;${itemCode}&lt;/ItemTypeCode&gt;&lt;Indemnity&gt;true&lt;/Indemnity&gt;&lt;ItemInputGroupList/&gt;&lt;/Item&gt;`
     }).join('')
 
     // Build verification request XML - pass as escaped string
