@@ -1,88 +1,132 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, CheckCircle2, Star, TrendingUp, Users, FileText, Clock, MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
+import { Shield, CheckCircle2, Star, TrendingUp, Users, FileText, Clock, MapPin, Phone, Mail, ArrowRight, Sparkles, Award, Globe, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
   const services = [
     {
       icon: Shield,
       title: "Credit Verification",
-      description: "Comprehensive credit history and financial background checks",
-      features: ["Credit Score Analysis", "Payment History", "Debt Assessment"]
+      description: "AI-powered credit analysis with real-time risk assessment",
+      features: ["Credit Score Analysis", "Payment History", "Debt Assessment", "Risk Profiling"],
+      color: "from-blue-500 to-cyan-500",
+      delay: "0ms"
     },
     {
       icon: Users,
       title: "Identity Verification",
-      description: "Secure identity validation and document verification",
-      features: ["ID Document Verification", "Biometric Matching", "Address Verification"]
+      description: "Biometric validation with military-grade security protocols",
+      features: ["Biometric Matching", "Document Verification", "Liveness Detection", "Multi-factor Auth"],
+      color: "from-purple-500 to-pink-500",
+      delay: "100ms"
     },
     {
       icon: FileText,
       title: "Employment Verification",
-      description: "Professional background and employment history validation",
-      features: ["Work History", "Reference Checks", "Qualification Verification"]
+      description: "Professional background validation with global database access",
+      features: ["Work History", "Reference Checks", "Qualification Verification", "Performance Analytics"],
+      color: "from-green-500 to-emerald-500",
+      delay: "200ms"
     },
     {
       icon: CheckCircle2,
       title: "Criminal Background",
-      description: "Thorough criminal record and legal history screening",
-      features: ["Criminal Records", "Court Records", "Watchlist Screening"]
+      description: "Comprehensive screening with international criminal databases",
+      features: ["Criminal Records", "Court Records", "Watchlist Screening", "Real-time Monitoring"],
+      color: "from-orange-500 to-red-500",
+      delay: "300ms"
     }
   ];
 
   const stats = [
-    { number: "10,000+", label: "Verifications Completed" },
-    { number: "99.9%", label: "Accuracy Rate" },
-    { number: "24/7", label: "Support Available" },
-    { number: "5 Min", label: "Average Processing" }
+    { number: "50,000+", label: "Verifications Completed", icon: Award, color: "text-primary" },
+    { number: "99.98%", label: "Accuracy Rate", icon: Sparkles, color: "text-accent" },
+    { number: "24/7", label: "Support Available", icon: Globe, color: "text-tertiary" },
+    { number: "2 Min", label: "Average Processing", icon: Zap, color: "text-warning" }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen bg-gradient-subtle relative overflow-hidden">
+      {/* Animated Background */}
+      <div 
+        className="fixed inset-0 opacity-30 pointer-events-none"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, hsl(var(--primary) / 0.1), transparent 40%)`
+        }}
+      />
+      
+      {/* Floating Elements */}
+      <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-primary rounded-full opacity-20 animate-pulse"></div>
+      <div className="absolute top-40 right-20 w-12 h-12 bg-gradient-premium rounded-full opacity-30 float-animation"></div>
+      <div className="absolute bottom-20 left-20 w-16 h-16 bg-gradient-luxury rounded-full opacity-25 animate-pulse"></div>
+
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-hero opacity-10"></div>
+      <section className="relative py-32 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-hero opacity-5"></div>
         <div className="container mx-auto text-center relative z-10">
-          <div className="flex items-center justify-center mb-8">
-            <div className="relative">
-              <div className="p-6 bg-gradient-hero rounded-3xl shadow-glow hover-lift">
-                <Shield className="h-16 w-16 text-primary-foreground" />
+          <div className="flex items-center justify-center mb-12">
+            <div className="relative pulse-premium">
+              <div className="p-8 bg-gradient-hero rounded-3xl shadow-luxury hover-glow">
+                <Shield className="h-20 w-20 text-primary-foreground" />
               </div>
-              <div className="absolute -top-2 -right-2 p-2 bg-accent rounded-full animate-pulse">
-                <Star className="h-6 w-6 text-accent-foreground" />
+              <div className="absolute -top-3 -right-3 p-3 bg-gradient-premium rounded-full animate-bounce">
+                <Star className="h-8 w-8 text-accent-foreground" />
+              </div>
+              <div className="absolute -bottom-2 -left-2 p-2 bg-gradient-luxury rounded-full">
+                <Sparkles className="h-6 w-6 text-primary-foreground" />
               </div>
             </div>
           </div>
           
-          <h1 className="text-6xl md:text-7xl font-bold font-display mb-6">
-            <span className="brand-text">Veritas</span>
+          <h1 className="text-7xl md:text-8xl font-bold font-display mb-8 tracking-tight">
+            <span className="brand-text drop-shadow-lg">Veritas</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4">
-            Professional Verification Platform
-          </p>
-          
-          <div className="flex items-center justify-center text-lg text-muted-foreground mb-8">
-            <MapPin className="h-5 w-5 mr-2" />
-            <span>Analytics X • Johannesburg, South Africa</span>
+          <div className="mb-6">
+            <p className="text-2xl md:text-3xl luxury-text mb-2 font-light">
+              The Future of Verification
+            </p>
+            <p className="text-lg md:text-xl text-muted-foreground/80">
+              Powered by Advanced AI & Machine Learning
+            </p>
           </div>
           
-          <p className="text-lg md:text-xl text-foreground mb-12 max-w-3xl mx-auto">
-            Trusted by enterprises across South Africa for comprehensive background verification, 
-            credit assessment, and identity validation services.
+          <div className="flex items-center justify-center text-lg text-muted-foreground mb-12 glass-card inline-flex px-6 py-3 rounded-full">
+            <MapPin className="h-5 w-5 mr-2 text-accent" />
+            <span>Analytics X • Johannesburg, South Africa</span>
+            <div className="ml-3 w-2 h-2 bg-success rounded-full animate-pulse"></div>
+          </div>
+          
+          <p className="text-xl md:text-2xl text-foreground mb-16 max-w-4xl mx-auto leading-relaxed">
+            Trusted by <span className="luxury-text font-semibold">500+ enterprises</span> across Africa for 
+            <br className="hidden md:block" />
+            next-generation verification, AI-powered risk assessment, and biometric validation.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="hero" className="text-lg px-8 py-6" asChild>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button size="xl" variant="luxury" className="text-xl px-12 py-8 group" asChild>
               <Link to="/services">
-                Explore Services
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Sparkles className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform" />
+                Explore Solutions
+                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
+            <Button size="xl" variant="glass" className="text-xl px-12 py-8 group" asChild>
               <Link to="/contact">
-                Get Quote
+                <Award className="mr-3 h-6 w-6" />
+                Premium Consultation
               </Link>
             </Button>
           </div>
@@ -90,12 +134,18 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto">
+      <section className="py-20 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-luxury opacity-5"></div>
+        <div className="container mx-auto relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold brand-text mb-2">
+              <div key={index} className="text-center group">
+                <div className="flex justify-center mb-4">
+                  <div className="p-4 bg-gradient-primary rounded-2xl shadow-luxury group-hover:scale-110 transition-luxury">
+                    <stat.icon className={`h-8 w-8 text-primary-foreground`} />
+                  </div>
+                </div>
+                <div className="text-4xl md:text-5xl font-bold brand-text mb-2 group-hover:scale-105 transition-luxury">
                   {stat.number}
                 </div>
                 <div className="text-muted-foreground font-medium">
@@ -108,40 +158,57 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
-              Our <span className="brand-text">Services</span>
+      <section className="py-24 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-glass"></div>
+        <div className="container mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold font-display mb-8">
+              Our <span className="luxury-text">Premium</span> <span className="brand-text">Services</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive verification solutions tailored for modern businesses
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Next-generation verification solutions powered by AI, machine learning, 
+              and advanced biometric technologies.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="hover-lift shadow-elegant border-0 bg-card/80 backdrop-blur-sm">
-                <CardHeader className="text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-gradient-primary rounded-xl">
-                      <service.icon className="h-8 w-8 text-primary-foreground" />
+              <Card 
+                key={index} 
+                className="premium-card group relative overflow-hidden"
+                style={{ animationDelay: service.delay }}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                <CardHeader className="text-center relative z-10">
+                  <div className="flex justify-center mb-6">
+                    <div className="p-4 bg-gradient-luxury rounded-2xl shadow-luxury group-hover:scale-110 group-hover:rotate-3 transition-luxury">
+                      <service.icon className="h-10 w-10 text-primary-foreground" />
                     </div>
                   </div>
-                  <CardTitle className="text-xl font-semibold">{service.title}</CardTitle>
-                  <CardDescription className="text-center">
+                  <CardTitle className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className="text-center text-base leading-relaxed">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
+                <CardContent className="relative z-10">
+                  <ul className="space-y-3">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center text-sm">
-                        <CheckCircle2 className="h-4 w-4 text-success mr-2" />
-                        {feature}
+                        <div className="p-1 bg-success/20 rounded-full mr-3">
+                          <CheckCircle2 className="h-3 w-3 text-success" />
+                        </div>
+                        <span className="font-medium">{feature}</span>
                       </li>
                     ))}
                   </ul>
+                  <div className="mt-6 pt-4 border-t border-border/50">
+                    <Button variant="ghost" size="sm" className="w-full group/btn">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}

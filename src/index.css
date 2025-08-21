@@ -8,65 +8,85 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Veritas Brand Colors - Modern & Professional */
-    --background: 220 15% 97%;
-    --foreground: 220 25% 15%;
+    /* Premium Brand Palette */
+    --background: 220 20% 98%;
+    --foreground: 220 30% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 15%;
+    --card-foreground: 220 30% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 15%;
+    --popover-foreground: 220 30% 8%;
 
-    /* Primary Brand - Sophisticated Blue */
-    --primary: 215 85% 55%;
+    /* Sophisticated Primary - Deep Sapphire */
+    --primary: 220 90% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 215 85% 65%;
-    --primary-dark: 215 85% 45%;
+    --primary-glow: 220 90% 60%;
+    --primary-dark: 220 90% 40%;
+    --primary-light: 220 90% 70%;
 
-    /* Secondary - Modern Gray */
-    --secondary: 220 15% 95%;
-    --secondary-foreground: 220 25% 15%;
+    /* Premium Secondary - Platinum */
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 220 30% 8%;
+    --secondary-dark: 220 20% 88%;
 
-    /* Accent - Energetic Teal for Youthful Touch */
-    --accent: 180 85% 45%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 180 85% 55%;
+    /* Luxury Accent - Royal Gold */
+    --accent: 45 100% 55%;
+    --accent-foreground: 220 30% 8%;
+    --accent-light: 45 100% 65%;
+    --accent-dark: 45 100% 45%;
 
-    --muted: 220 15% 95%;
-    --muted-foreground: 220 15% 50%;
+    /* Elegant Tertiary - Deep Emerald */
+    --tertiary: 160 85% 35%;
+    --tertiary-foreground: 0 0% 100%;
+    --tertiary-light: 160 85% 45%;
 
-    /* Status Colors */
-    --success: 145 80% 45%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 15% 45%;
+
+    /* Premium Status Colors */
+    --success: 145 85% 40%;
     --success-foreground: 0 0% 100%;
-    --warning: 40 95% 55%;
-    --warning-foreground: 220 25% 15%;
-    --processing: 260 85% 60%;
+    --success-light: 145 85% 50%;
+    --warning: 35 100% 50%;
+    --warning-foreground: 220 30% 8%;
+    --processing: 260 90% 55%;
     --processing-foreground: 0 0% 100%;
+    --error: 0 90% 55%;
+    --error-foreground: 0 0% 100%;
 
-    --destructive: 355 85% 55%;
+    --destructive: 0 90% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 90%;
-    --ring: 215 85% 55%;
+    --border: 220 20% 90%;
+    --input: 220 20% 94%;
+    --ring: 220 90% 50%;
 
-    /* Gradients */
+    /* Luxury Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-luxury: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--tertiary)));
+    --gradient-premium: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
     --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--card)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1), hsl(0 0% 100% / 0.05));
     
-    /* Shadows */
-    --shadow-elegant: 0 10px 40px -10px hsl(var(--primary) / 0.15);
-    --shadow-glow: 0 0 50px hsl(var(--primary-glow) / 0.3);
-    --shadow-soft: 0 4px 20px -5px hsl(220 25% 15% / 0.1);
+    /* Premium Shadows */
+    --shadow-luxury: 0 20px 60px -10px hsl(var(--primary) / 0.3), 0 8px 25px -5px hsl(var(--primary) / 0.2);
+    --shadow-premium: 0 25px 80px -15px hsl(var(--accent) / 0.4), 0 10px 30px -5px hsl(var(--accent) / 0.3);
+    --shadow-elegant: 0 10px 40px -10px hsl(220 30% 8% / 0.15);
+    --shadow-glow: 0 0 60px hsl(var(--primary-glow) / 0.4);
+    --shadow-soft: 0 4px 20px -5px hsl(220 30% 8% / 0.08);
+    --shadow-crisp: 0 1px 3px hsl(220 30% 8% / 0.12), 0 1px 2px hsl(220 30% 8% / 0.24);
     
-    /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Advanced Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-luxury: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-premium: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-    --radius: 0.75rem;
+    --radius: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-xl: 2rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -86,38 +106,48 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 220 25% 6%;
-    --foreground: 220 15% 95%;
+    --background: 220 30% 4%;
+    --foreground: 220 20% 96%;
 
-    --card: 220 25% 8%;
-    --card-foreground: 220 15% 95%;
+    --card: 220 30% 6%;
+    --card-foreground: 220 20% 96%;
 
-    --popover: 220 25% 8%;
-    --popover-foreground: 220 15% 95%;
+    --popover: 220 30% 6%;
+    --popover-foreground: 220 20% 96%;
 
-    --primary: 215 85% 60%;
+    --primary: 220 90% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 215 85% 70%;
-    --primary-dark: 215 85% 50%;
+    --primary-glow: 220 90% 70%;
+    --primary-dark: 220 90% 50%;
+    --primary-light: 220 90% 80%;
 
-    --secondary: 220 25% 15%;
-    --secondary-foreground: 220 15% 95%;
+    --secondary: 220 30% 12%;
+    --secondary-foreground: 220 20% 96%;
+    --secondary-dark: 220 30% 8%;
 
-    --accent: 180 85% 55%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 180 85% 65%;
+    --accent: 45 100% 60%;
+    --accent-foreground: 220 30% 4%;
+    --accent-light: 45 100% 70%;
+    --accent-dark: 45 100% 50%;
 
-    --muted: 220 25% 15%;
-    --muted-foreground: 220 15% 65%;
+    --tertiary: 160 85% 45%;
+    --tertiary-foreground: 0 0% 100%;
+    --tertiary-light: 160 85% 55%;
 
-    --success: 145 80% 50%;
+    --muted: 220 30% 12%;
+    --muted-foreground: 220 20% 65%;
+
+    --success: 145 85% 50%;
     --success-foreground: 0 0% 100%;
-    --warning: 40 95% 60%;
-    --warning-foreground: 220 25% 15%;
-    --processing: 260 85% 65%;
+    --success-light: 145 85% 60%;
+    --warning: 35 100% 55%;
+    --warning-foreground: 220 30% 4%;
+    --processing: 260 90% 65%;
     --processing-foreground: 0 0% 100%;
+    --error: 0 90% 60%;
+    --error-foreground: 0 0% 100%;
 
-    --destructive: 355 85% 60%;
+    --destructive: 0 90% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 217.2 32.6% 17.5%;
@@ -141,38 +171,160 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-medium;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings: "rlig" 1, "calt" 1, "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
   }
 }
 
 @layer components {
-  /* Hero Section Styles */
-  .hero-gradient {
-    background: var(--gradient-hero);
+  /* Premium Brand Elements */
+  .luxury-gradient {
+    background: var(--gradient-luxury);
   }
   
-  .accent-gradient {
-    background: var(--gradient-accent);
+  .premium-gradient {
+    background: var(--gradient-premium);
   }
   
-  /* Brand Typography */
+  .glass-gradient {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+  }
+  
+  /* Advanced Typography */
   .brand-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
   
-  /* Animated Elements */
+  .luxury-text {
+    background: var(--gradient-luxury);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+  }
+  
+  .premium-text {
+    background: var(--gradient-premium);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+  }
+  
+  /* Sophisticated Animations */
   .hover-lift {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-elegant;
+    transition: var(--transition-luxury);
+    transform-origin: center;
   }
   
-  .pulse-glow {
-    @apply animate-pulse shadow-glow;
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-luxury);
+  }
+  
+  .hover-glow {
+    transition: var(--transition-smooth);
+    position: relative;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+  
+  .pulse-premium {
+    animation: pulse-premium 3s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-premium {
+    0%, 100% { 
+      box-shadow: var(--shadow-elegant);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: var(--shadow-luxury);
+      transform: scale(1.02);
+    }
+  }
+  
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Premium Interactive Elements */
+  .premium-card {
+    @apply bg-card/80 backdrop-blur-sm border-0 rounded-xl;
+    box-shadow: var(--shadow-elegant);
+    transition: var(--transition-luxury);
+  }
+  
+  .premium-card:hover {
+    box-shadow: var(--shadow-luxury);
+    transform: translateY(-4px);
+  }
+  
+  .glass-card {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+    box-shadow: var(--shadow-soft);
+  }
+  
+  /* Luxury Borders */
+  .luxury-border {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+  
+  .luxury-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    background: var(--gradient-primary);
+  }
+  
+  /* Premium Scrollbar */
+  .premium-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .premium-scroll::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+  
+  .premium-scroll::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 4px;
+  }
+  
+  .premium-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-luxury);
   }
 }
