@@ -36,8 +36,8 @@ Deno.serve(async (req) => {
                xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
                xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <ksoGetItemTypes xmlns="http://www.mie.co.za/">
-      <Token>${tokenXml}</Token>
+    <ksoGetItemTypes xmlns="http://www.kroll.co.za/">
+      <aLogonXml>${tokenXml}</aLogonXml>
     </ksoGetItemTypes>
   </soap:Body>
 </soap:Envelope>`
@@ -49,7 +49,7 @@ Deno.serve(async (req) => {
       method: 'POST',
       headers: {
         'Content-Type': 'text/xml; charset=utf-8',
-        'SOAPAction': 'http://www.mie.co.za/ksoGetItemTypes'
+        'SOAPAction': 'http://www.kroll.co.za/ksoGetItemTypes'
       },
       body: soapEnvelope
     })
