@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { Shield, CheckCircle2 } from 'lucide-react';
+import { Shield, CheckCircle2, MapPin, Star } from 'lucide-react';
 
 export const AuthPage = () => {
   const [loading, setLoading] = useState(false);
@@ -105,7 +105,7 @@ export const AuthPage = () => {
             minLength={6}
           />
         </div>
-        <Button type="submit" className="w-full" disabled={loading} variant="hero">
+        <Button type="submit" className="w-full" disabled={loading} variant="hero" size="lg">
           {loading ? (
             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
           ) : null}
@@ -119,20 +119,32 @@ export const AuthPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-subtle p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <div className="p-3 bg-gradient-primary rounded-full shadow-glow">
-              <Shield className="h-8 w-8 text-primary-foreground" />
+          <div className="flex items-center justify-center mb-6">
+            <div className="relative">
+              <div className="p-4 bg-gradient-hero rounded-2xl shadow-glow hover-lift">
+                <Shield className="h-10 w-10 text-primary-foreground" />
+              </div>
+              <div className="absolute -top-1 -right-1 p-1 bg-accent rounded-full">
+                <Star className="h-3 w-3 text-accent-foreground" />
+              </div>
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">MIE Verifier</h1>
-          <p className="text-muted-foreground">Professional verification management system</p>
+          <h1 className="text-4xl font-bold font-display mb-2">
+            <span className="brand-text">Veritas</span>
+          </h1>
+          <p className="text-lg text-muted-foreground mb-1">by Analytics X</p>
+          <div className="flex items-center justify-center text-sm text-muted-foreground">
+            <MapPin className="h-4 w-4 mr-1" />
+            <span>Johannesburg, South Africa</span>
+          </div>
+          <p className="text-muted-foreground mt-3">Professional verification platform</p>
         </div>
 
-        <Card className="shadow-elegant">
-          <CardHeader>
-            <CardTitle>Admin Access</CardTitle>
+        <Card className="shadow-elegant hover-lift border-0 bg-card/80 backdrop-blur-sm">
+          <CardHeader className="text-center">
+            <CardTitle className="text-xl font-semibold">Welcome Back</CardTitle>
             <CardDescription>
-              Sign in to manage verification requests and view results
+              Access your verification dashboard
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -151,10 +163,13 @@ export const AuthPage = () => {
           </CardContent>
         </Card>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center space-y-3">
           <div className="flex items-center justify-center text-sm text-muted-foreground">
-            <CheckCircle2 className="h-4 w-4 mr-2" />
-            Secure authentication powered by Supabase
+            <CheckCircle2 className="h-4 w-4 mr-2 text-success" />
+            Enterprise-grade security & encryption
+          </div>
+          <div className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Analytics X. All rights reserved.
           </div>
         </div>
       </div>
