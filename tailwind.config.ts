@@ -100,6 +100,7 @@ export default {
 				'gradient-hero': 'var(--gradient-hero)',
 				'gradient-luxury': 'var(--gradient-luxury)',
 				'gradient-premium': 'var(--gradient-premium)',
+				'gradient-youthful': 'var(--gradient-youthful)',
 				'gradient-subtle': 'var(--gradient-subtle)',
 				'gradient-glass': 'var(--gradient-glass)'
 			},

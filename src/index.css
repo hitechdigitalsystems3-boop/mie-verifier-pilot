@@ -30,11 +30,11 @@ All colors MUST be HSL.
     --secondary-foreground: 220 30% 8%;
     --secondary-dark: 220 20% 88%;
 
-    /* Luxury Accent - Royal Gold */
-    --accent: 45 100% 55%;
-    --accent-foreground: 220 30% 8%;
-    --accent-light: 45 100% 65%;
-    --accent-dark: 45 100% 45%;
+    /* Youthful Accent - Electric Cyan */
+    --accent: 195 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 195 100% 60%;
+    --accent-dark: 195 100% 40%;
 
     /* Elegant Tertiary - Deep Emerald */
     --tertiary: 160 85% 35%;
@@ -62,11 +62,12 @@ All colors MUST be HSL.
     --input: 220 20% 94%;
     --ring: 220 90% 50%;
 
-    /* Luxury Gradients */
+    /* Youthful Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     --gradient-luxury: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--tertiary)));
     --gradient-premium: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
+    --gradient-youthful: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary-light)));
     --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--card)));
     --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1), hsl(0 0% 100% / 0.05));
     
@@ -125,10 +126,10 @@ All colors MUST be HSL.
     --secondary-foreground: 220 20% 96%;
     --secondary-dark: 220 30% 8%;
 
-    --accent: 45 100% 60%;
-    --accent-foreground: 220 30% 4%;
-    --accent-light: 45 100% 70%;
-    --accent-dark: 45 100% 50%;
+    --accent: 195 100% 55%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 195 100% 65%;
+    --accent-dark: 195 100% 45%;
 
     --tertiary: 160 85% 45%;
     --tertiary-foreground: 0 0% 100%;

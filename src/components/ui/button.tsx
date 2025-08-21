@@ -11,6 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary-dark hover:shadow-luxury hover:scale-105 shadow-crisp",
         hero: "bg-gradient-hero text-primary-foreground hover:shadow-premium hover:scale-105 transition-luxury font-bold tracking-wide",
+        youthful: "bg-gradient-youthful text-primary-foreground hover:shadow-glow hover:scale-105 transition-luxury font-bold",
         luxury: "bg-gradient-luxury text-primary-foreground hover:shadow-luxury hover:scale-105 transition-luxury font-bold",
         premium: "bg-gradient-premium text-accent-foreground hover:shadow-premium hover:scale-105 transition-luxury font-bold",
         accent: "bg-accent text-accent-foreground hover:bg-accent-dark hover:shadow-glow hover:scale-105 transition-luxury",

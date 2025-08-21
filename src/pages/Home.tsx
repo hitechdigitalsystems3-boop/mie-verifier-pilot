@@ -72,61 +72,60 @@ const Home = () => {
       <div className="absolute top-40 right-20 w-12 h-12 bg-gradient-premium rounded-full opacity-30 float-animation"></div>
       <div className="absolute bottom-20 left-20 w-16 h-16 bg-gradient-luxury rounded-full opacity-25 animate-pulse"></div>
 
-      {/* Hero Section */}
-      <section className="relative py-32 px-4 overflow-hidden">
+      {/* Hero Section - Optimized for Laptop */}
+      <section className="relative py-16 px-4 overflow-hidden min-h-[85vh] flex items-center">
         <div className="absolute inset-0 bg-gradient-hero opacity-5"></div>
         <div className="container mx-auto text-center relative z-10">
-          <div className="flex items-center justify-center mb-12">
+          <div className="flex items-center justify-center mb-8">
             <div className="relative pulse-premium">
-              <div className="p-8 bg-gradient-hero rounded-3xl shadow-luxury hover-glow">
-                <Shield className="h-20 w-20 text-primary-foreground" />
+              <div className="p-6 bg-gradient-hero rounded-2xl shadow-luxury hover-glow">
+                <Shield className="h-14 w-14 text-primary-foreground" />
               </div>
-              <div className="absolute -top-3 -right-3 p-3 bg-gradient-premium rounded-full animate-bounce">
-                <Star className="h-8 w-8 text-accent-foreground" />
+              <div className="absolute -top-2 -right-2 p-2 bg-gradient-youthful rounded-full animate-bounce">
+                <Star className="h-5 w-5 text-accent-foreground" />
               </div>
-              <div className="absolute -bottom-2 -left-2 p-2 bg-gradient-luxury rounded-full">
-                <Sparkles className="h-6 w-6 text-primary-foreground" />
+              <div className="absolute -bottom-1 -left-1 p-1.5 bg-gradient-luxury rounded-full">
+                <Sparkles className="h-4 w-4 text-primary-foreground" />
               </div>
             </div>
           </div>
           
-          <h1 className="text-7xl md:text-8xl font-bold font-display mb-8 tracking-tight">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-display mb-6 tracking-tight">
             <span className="brand-text drop-shadow-lg">Veritas</span>
           </h1>
           
           <div className="mb-6">
-            <p className="text-2xl md:text-3xl luxury-text mb-2 font-light">
+            <p className="text-xl md:text-2xl luxury-text mb-2 font-light">
               The Future of Verification
             </p>
-            <p className="text-lg md:text-xl text-muted-foreground/80">
+            <p className="text-base md:text-lg text-muted-foreground/80">
               Powered by Advanced AI & Machine Learning
             </p>
           </div>
           
-          <div className="flex items-center justify-center text-lg text-muted-foreground mb-12 glass-card inline-flex px-6 py-3 rounded-full">
-            <MapPin className="h-5 w-5 mr-2 text-accent" />
+          <div className="flex items-center justify-center text-sm md:text-base text-muted-foreground mb-8 glass-card inline-flex px-4 py-2 rounded-full">
+            <MapPin className="h-4 w-4 mr-2 text-accent" />
             <span>Analytics X • Johannesburg, South Africa</span>
-            <div className="ml-3 w-2 h-2 bg-success rounded-full animate-pulse"></div>
+            <div className="ml-2 w-1.5 h-1.5 bg-success rounded-full animate-pulse"></div>
           </div>
           
-          <p className="text-xl md:text-2xl text-foreground mb-16 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
             Trusted by <span className="luxury-text font-semibold">500+ enterprises</span> across Africa for 
-            <br className="hidden md:block" />
-            next-generation verification, AI-powered risk assessment, and biometric validation.
+            next-generation verification and AI-powered risk assessment.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button size="xl" variant="luxury" className="text-xl px-12 py-8 group" asChild>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" variant="youthful" className="text-lg px-8 py-6 group" asChild>
               <Link to="/services">
-                <Sparkles className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform" />
+                <Sparkles className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 Explore Solutions
-                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button size="xl" variant="glass" className="text-xl px-12 py-8 group" asChild>
+            <Button size="lg" variant="glass" className="text-lg px-8 py-6 group" asChild>
               <Link to="/contact">
-                <Award className="mr-3 h-6 w-6" />
-                Premium Consultation
+                <Award className="mr-2 h-5 w-5" />
+                Get Consultation
               </Link>
             </Button>
           </div>
