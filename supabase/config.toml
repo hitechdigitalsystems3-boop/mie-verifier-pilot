@@ -1,1 +1,10 @@
 project_id = "dsopyhtyvhdsergrcgdk"
+
+[functions.mie-test]
+verify_jwt = false
+
+[functions.mie-submit]
+verify_jwt = true
+
+[functions.mie-callback]
+verify_jwt = false
