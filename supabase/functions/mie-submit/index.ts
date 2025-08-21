@@ -1,3 +1,4 @@
+
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const corsHeaders = {
@@ -78,14 +79,8 @@ Deno.serve(async (req) => {
       throw new Error('MIE credentials not configured')
     }
 
-    // Build authentication token XML
-    const tokenXml = `<xml>
-      <Token>
-        <UserName>${username}</UserName>
-        <Password>${password}</Password>
-        <Source>SMARTWEB</Source>
-      </Token>
-    </xml>`
+    // Build authentication token XML - pass as escaped string
+    const tokenXml = `&lt;xml&gt;&lt;Token&gt;&lt;UserName&gt;${username}&lt;/UserName&gt;&lt;Password&gt;${password}&lt;/Password&gt;&lt;Source&gt;SMARTWEB&lt;/Source&gt;&lt;/Token&gt;&lt;/xml&gt;`
 
     // Build item list
     const itemListXml = verificationTypes.map((type: string, index: number) => {
@@ -99,23 +94,8 @@ Deno.serve(async (req) => {
         </Item>`
     }).join('')
 
-    // Build verification request XML
-    const requestXml = `<xml>
-      <Request>
-        <ClientKey>${clientKey}</ClientKey>
-        <AgentKey>${clientKey}</AgentKey>
-        <AgentClient>${clientKey}</AgentClient>
-        <RemoteRequest>${remoteRequestId}</RemoteRequest>
-        <FirstNames>${firstName}</FirstNames>
-        <Surname>${surname}</Surname>
-        <IdNumber>${idNumber}</IdNumber>
-        <DateOfBirth>${dateOfBirth}</DateOfBirth>
-        <Source>SMARTWEB</Source>
-        <EntityKind>PERSON</EntityKind>
-        <ItemList>${itemListXml}
-        </ItemList>
-      </Request>
-    </xml>`
+    // Build verification request XML - pass as escaped string
+    const requestXml = `&lt;xml&gt;&lt;Request&gt;&lt;ClientKey&gt;${clientKey}&lt;/ClientKey&gt;&lt;AgentKey&gt;${clientKey}&lt;/AgentKey&gt;&lt;AgentClient&gt;${clientKey}&lt;/AgentClient&gt;&lt;RemoteRequest&gt;${remoteRequestId}&lt;/RemoteRequest&gt;&lt;FirstNames&gt;${firstName}&lt;/FirstNames&gt;&lt;Surname&gt;${surname}&lt;/Surname&gt;&lt;IdNumber&gt;${idNumber}&lt;/IdNumber&gt;&lt;DateOfBirth&gt;${dateOfBirth}&lt;/DateOfBirth&gt;&lt;Source&gt;SMARTWEB&lt;/Source&gt;&lt;EntityKind&gt;PERSON&lt;/EntityKind&gt;&lt;ItemList&gt;${itemListXml}&lt;/ItemList&gt;&lt;/Request&gt;&lt;/xml&gt;`
 
     // Build SOAP envelope for ksoPutRequest
     const soapEnvelope = `<?xml version="1.0" encoding="utf-8"?>
@@ -123,21 +103,22 @@ Deno.serve(async (req) => {
                xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
                xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <ksoPutRequest xmlns="http://www.mie.co.za/">
-      <Token>${tokenXml}</Token>
-      <Request>${requestXml}</Request>
+    <ksoPutRequest xmlns="http://www.kroll.co.za/">
+      <aLogonXml>${tokenXml}</aLogonXml>
+      <aRequestXml>${requestXml}</aRequestXml>
     </ksoPutRequest>
   </soap:Body>
 </soap:Envelope>`
 
     console.log('Submitting verification request to MIE...')
+    console.log('SOAP envelope:', soapEnvelope)
 
     // Send SOAP request to QA endpoint
     const response = await fetch('https://qa.mie.co.za/internal/services/epcvrequest/epcvrequest.asmx', {
       method: 'POST',
       headers: {
         'Content-Type': 'text/xml; charset=utf-8',
-        'SOAPAction': '"http://www.mie.co.za/ksoPutRequest"'
+        'SOAPAction': 'http://www.kroll.co.za/ksoPutRequest'
       },
       body: soapEnvelope
     })
