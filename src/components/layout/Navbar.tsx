@@ -73,7 +73,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-3">
               <Button variant="ghost" size="sm" asChild>
                 <Link to="/admin">
-                  Admin Portal
+                  Sign In
                 </Link>
               </Button>
               <Button variant="hero" size="sm" asChild>
@@ -124,7 +124,7 @@ const Navbar = () => {
                   <div className="flex flex-col space-y-3 pt-6 border-t">
                     <Button variant="ghost" size="sm" asChild className="justify-start">
                       <Link to="/admin" onClick={() => setIsOpen(false)}>
-                        Admin Portal
+                        Sign In
                       </Link>
                     </Button>
                     <Button variant="hero" size="sm" asChild className="justify-center">
