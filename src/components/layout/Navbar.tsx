@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Shield, Menu, Star, ArrowRight } from 'lucide-react';
+import { Menu, Star, ArrowRight } from 'lucide-react';
+import VeritasIcon from '@/components/ui/veritas-icon';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +49,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-3 hover-lift">
             <div className="relative">
               <div className="p-2 bg-gradient-hero rounded-lg shadow-soft">
-                <Shield className="h-6 w-6 text-primary-foreground" />
+                <VeritasIcon size={24} className="text-primary-foreground" />
               </div>
               <div className="absolute -top-1 -right-1 p-1 bg-accent rounded-full">
                 <Star className="h-2 w-2 text-accent-foreground" />
@@ -99,7 +100,7 @@ const Navbar = () => {
                   <Link to="/" className="flex items-center space-x-3" onClick={() => setIsOpen(false)}>
                     <div className="relative">
                       <div className="p-2 bg-gradient-hero rounded-lg shadow-soft">
-                        <Shield className="h-6 w-6 text-primary-foreground" />
+                        <VeritasIcon size={24} className="text-primary-foreground" />
                       </div>
                       <div className="absolute -top-1 -right-1 p-1 bg-accent rounded-full">
                         <Star className="h-2 w-2 text-accent-foreground" />

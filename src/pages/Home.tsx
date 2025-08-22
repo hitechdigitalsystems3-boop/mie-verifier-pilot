@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Shield, CheckCircle2, Star, TrendingUp, Users, FileText, Clock, MapPin, Phone, Mail, ArrowRight, Sparkles, Award, Globe, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import VeritasIcon from '@/components/ui/veritas-icon';
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -17,7 +18,7 @@ const Home = () => {
   }, []);
   const services = [
     {
-      icon: Shield,
+      icon: VeritasIcon,
       title: "Credit Verification",
       description: "AI-powered credit analysis with real-time risk assessment",
       features: ["Credit Score Analysis", "Payment History", "Debt Assessment", "Risk Profiling"],
@@ -79,7 +80,7 @@ const Home = () => {
           <div className="flex items-center justify-center mb-8">
             <div className="relative pulse-premium">
               <div className="p-6 bg-gradient-hero rounded-2xl shadow-luxury hover-glow">
-                <Shield className="h-14 w-14 text-primary-foreground" />
+                <VeritasIcon size={56} className="text-primary-foreground" />
               </div>
               <div className="absolute -top-2 -right-2 p-2 bg-gradient-youthful rounded-full animate-bounce">
                 <Star className="h-5 w-5 text-accent-foreground" />
@@ -244,7 +245,7 @@ const Home = () => {
                 
                 <div className="flex items-start">
                   <div className="p-2 bg-gradient-primary rounded-lg mr-4">
-                    <Shield className="h-6 w-6 text-primary-foreground" />
+                    <VeritasIcon size={24} className="text-primary-foreground" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Enterprise Security</h3>

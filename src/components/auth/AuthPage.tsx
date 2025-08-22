@@ -6,7 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import { Shield, CheckCircle2, MapPin, Star } from 'lucide-react';
+import { CheckCircle2, MapPin, Star } from 'lucide-react';
+import VeritasIcon from '@/components/ui/veritas-icon';
 
 export const AuthPage = () => {
   const [loading, setLoading] = useState(false);
@@ -122,7 +123,7 @@ export const AuthPage = () => {
           <div className="flex items-center justify-center mb-6">
             <div className="relative">
               <div className="p-4 bg-gradient-hero rounded-2xl shadow-glow hover-lift">
-                <Shield className="h-10 w-10 text-primary-foreground" />
+                <VeritasIcon size={40} className="text-primary-foreground" />
               </div>
               <div className="absolute -top-1 -right-1 p-1 bg-accent rounded-full">
                 <Star className="h-3 w-3 text-accent-foreground" />
