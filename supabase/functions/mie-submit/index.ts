@@ -51,6 +51,8 @@ Deno.serve(async (req) => {
     const timestamp = Date.now().toString().slice(-8) // Last 8 digits of timestamp
     const randomSuffix = Math.random().toString().slice(2, 8) // 6 digit random number
     const remoteRequestId = `122${timestamp}${randomSuffix}`
+    
+    console.log('Generated MIE reference ID:', remoteRequestId)
 
     // Insert request into database
     const { data: requestData, error: insertError } = await supabaseClient
