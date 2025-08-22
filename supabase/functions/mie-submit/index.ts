@@ -47,8 +47,10 @@ Deno.serve(async (req) => {
 
     console.log('Processing verification request for:', firstName, surname)
 
-    // Generate unique remote request ID
-    const remoteRequestId = `REQ_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+    // Generate unique remote request ID starting with 122 as required by MIE
+    const timestamp = Date.now().toString().slice(-8) // Last 8 digits of timestamp
+    const randomSuffix = Math.random().toString().slice(2, 8) // 6 digit random number
+    const remoteRequestId = `122${timestamp}${randomSuffix}`
 
     // Insert request into database
     const { data: requestData, error: insertError } = await supabaseClient
