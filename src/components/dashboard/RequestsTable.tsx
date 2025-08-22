@@ -126,6 +126,7 @@ export const RequestsTable = () => {
             <TableRow>
               <TableHead>Name</TableHead>
               <TableHead>ID Number</TableHead>
+              <TableHead>MIE Reference</TableHead>
               <TableHead>Verification Types</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Submitted</TableHead>
@@ -136,7 +137,7 @@ export const RequestsTable = () => {
           <TableBody>
             {filteredRequests.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
                   No verification requests found
                 </TableCell>
               </TableRow>
@@ -148,6 +149,9 @@ export const RequestsTable = () => {
                   </TableCell>
                   <TableCell className="font-mono text-sm">
                     {request.id_number}
+                  </TableCell>
+                  <TableCell className="font-mono text-sm">
+                    {request.remote_request_id || 'N/A'}
                   </TableCell>
                   <TableCell>
                     <div className="flex flex-wrap gap-1">
