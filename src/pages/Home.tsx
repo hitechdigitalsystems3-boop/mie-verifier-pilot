@@ -112,7 +112,7 @@ const Home = () => {
           
           <p className="text-lg md:text-xl text-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
             Trusted by <span className="luxury-text font-semibold">500+ enterprises</span> across Africa for 
-            next-generation verification and AI-powered risk assessment.
+            production-grade verification and AI-powered risk assessment services.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -166,8 +166,8 @@ const Home = () => {
               Our <span className="luxury-text">Premium</span> <span className="brand-text">Services</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Next-generation verification solutions powered by AI, machine learning, 
-              and advanced biometric technologies.
+              Production-grade verification solutions powered by AI, machine learning, 
+              and advanced biometric technologies for enterprise clients.
             </p>
           </div>
           
@@ -226,7 +226,7 @@ const Home = () => {
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 We combine cutting-edge technology with local expertise to deliver 
-                unparalleled verification services across South Africa.
+                unparalleled production-grade verification services across South Africa and beyond.
               </p>
               
               <div className="space-y-6">
@@ -235,9 +235,9 @@ const Home = () => {
                     <TrendingUp className="h-6 w-6 text-accent-foreground" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Lightning Fast Processing</h3>
+                    <h3 className="text-xl font-semibold mb-2">Enterprise-Grade Processing</h3>
                     <p className="text-muted-foreground">
-                      Get verification results in minutes, not days. Our automated 
+                      Get production verification results in minutes, not days. Our automated 
                       systems ensure rapid processing without compromising accuracy.
                     </p>
                   </div>
@@ -248,10 +248,10 @@ const Home = () => {
                     <VeritasIcon size={24} className="text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Enterprise Security</h3>
+                    <h3 className="text-xl font-semibold mb-2">Production Security</h3>
                     <p className="text-muted-foreground">
-                      Bank-grade encryption and compliance with POPIA regulations 
-                      ensure your data remains secure and confidential.
+                      Bank-grade encryption and full compliance with POPIA regulations 
+                      ensure your data remains secure and confidential in production.
                     </p>
                   </div>
                 </div>
@@ -325,8 +325,8 @@ const Home = () => {
             Ready to Get <span className="brand-text">Started</span>?
           </h2>
           <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Join hundreds of businesses who trust Veritas for their verification needs. 
-            Contact us today for a personalized consultation.
+            Join hundreds of businesses who trust Veritas for their production verification needs. 
+            Contact us today for a personalized enterprise consultation.
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">

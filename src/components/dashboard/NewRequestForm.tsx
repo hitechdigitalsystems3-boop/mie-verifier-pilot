@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Send, AlertCircle } from 'lucide-react';
+import { trackVerificationSubmission, trackConnectionTest } from '@/components/ui/analytics';
 
 const VERIFICATION_TYPES = [
   { id: 'CREDIT', label: 'Credit Check', description: 'Credit history and financial standing' },
@@ -61,9 +62,11 @@ export const NewRequestForm = () => {
 
       toast({
         title: "Connection Successful",
-        description: "MIE API connection is working properly",
+        description: "MIE Production API connection is working properly",
       });
+      trackConnectionTest(true);
     } catch (error: any) {
+      trackConnectionTest(false, error.message);
       toast({
         title: "Connection Failed",
         description: error.message,
@@ -88,18 +91,8 @@ export const NewRequestForm = () => {
 
     setLoading(true);
     try {
-      // Format date of birth for MIE API
+      // Production: Format date of birth for MIE API
       const dobFormatted = new Date(formData.dateOfBirth).toISOString();
-
-      console.log('Submitting to mie-submit function with data:', {
-        clientKey: formData.clientKey,
-        firstName: formData.firstName,
-        surname: formData.surname,
-        idNumber: formData.idNumber,
-        dateOfBirth: dobFormatted,
-        verificationTypes: formData.verificationTypes,
-        additionalNotes: formData.additionalNotes,
-      });
 
       const response = await supabase.functions.invoke('mie-submit', {
         body: {
@@ -113,8 +106,6 @@ export const NewRequestForm = () => {
         }
       });
 
-      console.log('Response from mie-submit:', response);
-
       if (response.error) {
         throw new Error(response.error.message);
       }
@@ -124,9 +115,12 @@ export const NewRequestForm = () => {
       }
 
       toast({
-        title: "Request Submitted",
-        description: `Verification request submitted successfully. Request ID: ${response.data.requestId}`,
+        title: "Request Submitted Successfully",
+        description: `Production verification request submitted. Request ID: ${response.data.requestId}`,
       });
+
+      // Track successful submission for analytics
+      trackVerificationSubmission(formData.verificationTypes, formData.clientKey);
 
       // Reset form
       setFormData({
@@ -157,10 +151,10 @@ export const NewRequestForm = () => {
         <CardHeader>
           <CardTitle className="text-lg flex items-center">
             <AlertCircle className="h-5 w-5 mr-2 text-warning" />
-            MIE API Connection
+            MIE Production API Connection
           </CardTitle>
           <CardDescription>
-            Test the connection to MIE API before submitting requests
+            Test the connection to MIE Production API before submitting live requests
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -173,7 +167,7 @@ export const NewRequestForm = () => {
             {testingConnection ? (
               <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary mr-2"></div>
             ) : null}
-            Test Connection
+            Test Production Connection
           </Button>
         </CardContent>
       </Card>
@@ -278,7 +272,7 @@ export const NewRequestForm = () => {
           ) : (
             <Send className="h-4 w-4 mr-2" />
           )}
-          Submit Verification Request
+          Submit Live Verification Request
         </Button>
       </form>
     </div>

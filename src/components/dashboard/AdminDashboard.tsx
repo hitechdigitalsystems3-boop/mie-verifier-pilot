@@ -8,6 +8,7 @@ import { RequestsTable } from './RequestsTable';
 import { ResultsTable } from './ResultsTable';
 import { Shield, FileText, CheckCircle2, LogOut, Settings, MapPin, Star, TrendingUp } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { ProductionBanner } from '@/components/production/ProductionBanner';
 
 export const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('new-request');
@@ -70,9 +71,11 @@ export const AdminDashboard = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
+        <ProductionBanner />
+        
         <div className="mb-8">
-          <h2 className="text-3xl font-bold font-display mb-2">Verification Dashboard</h2>
-          <p className="text-muted-foreground">Manage verification requests and view comprehensive reports</p>
+          <h2 className="text-3xl font-bold font-display mb-2">Live Production Dashboard</h2>
+          <p className="text-muted-foreground">Manage live verification requests and view comprehensive production reports</p>
         </div>
         
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
@@ -96,10 +99,10 @@ export const AdminDashboard = () => {
               <CardHeader>
                 <CardTitle className="text-xl font-semibold flex items-center">
                   <FileText className="h-5 w-5 mr-2 text-primary" />
-                  Submit New Verification Request
+                  Submit New Live Verification Request
                 </CardTitle>
                 <CardDescription>
-                  Create comprehensive verification requests with multiple validation types
+                  Create comprehensive production verification requests with multiple validation types
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -113,10 +116,10 @@ export const AdminDashboard = () => {
               <CardHeader>
                 <CardTitle className="text-xl font-semibold flex items-center">
                   <Settings className="h-5 w-5 mr-2 text-processing" />
-                  Active Verification Requests
+                  Live Verification Requests
                 </CardTitle>
                 <CardDescription>
-                  Real-time monitoring and status tracking of all verification requests
+                  Real-time monitoring and status tracking of all production verification requests
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -130,10 +133,10 @@ export const AdminDashboard = () => {
               <CardHeader>
                 <CardTitle className="text-xl font-semibold flex items-center">
                   <CheckCircle2 className="h-5 w-5 mr-2 text-success" />
-                  Verification Results & Reports
+                  Production Verification Results & Reports
                 </CardTitle>
                 <CardDescription>
-                  Comprehensive results with detailed reports and downloadable documentation
+                  Comprehensive live results with detailed reports and downloadable production documentation
                 </CardDescription>
               </CardHeader>
               <CardContent>

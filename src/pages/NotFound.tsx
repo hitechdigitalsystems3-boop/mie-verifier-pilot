@@ -4,11 +4,18 @@ import { useEffect } from "react";
 const NotFound = () => {
   const location = useLocation();
 
+  // Production: Page not found - redirect to home or show 404
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
+    // Production: Analytics tracking for 404 errors
+    if (location.pathname !== '/' && typeof window !== 'undefined') {
+      // Track 404 errors for analytics (gtag will be available if Google Analytics is configured)
+      const gtag = (window as any).gtag;
+      if (gtag && typeof gtag === 'function') {
+        gtag('event', 'page_not_found', {
+          page_path: location.pathname
+        });
+      }
+    }
   }, [location.pathname]);
 
   return (
