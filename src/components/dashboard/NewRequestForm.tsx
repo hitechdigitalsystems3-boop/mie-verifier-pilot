@@ -91,6 +91,16 @@ export const NewRequestForm = () => {
       // Format date of birth for MIE API
       const dobFormatted = new Date(formData.dateOfBirth).toISOString();
 
+      console.log('Submitting to mie-submit function with data:', {
+        clientKey: formData.clientKey,
+        firstName: formData.firstName,
+        surname: formData.surname,
+        idNumber: formData.idNumber,
+        dateOfBirth: dobFormatted,
+        verificationTypes: formData.verificationTypes,
+        additionalNotes: formData.additionalNotes,
+      });
+
       const response = await supabase.functions.invoke('mie-submit', {
         body: {
           clientKey: formData.clientKey,
@@ -102,6 +112,8 @@ export const NewRequestForm = () => {
           additionalNotes: formData.additionalNotes,
         }
       });
+
+      console.log('Response from mie-submit:', response);
 
       if (response.error) {
         throw new Error(response.error.message);
