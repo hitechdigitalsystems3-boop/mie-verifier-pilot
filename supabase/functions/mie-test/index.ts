@@ -41,8 +41,8 @@ Deno.serve(async (req) => {
     console.log('Complete SOAP envelope:', soapEnvelope)
     console.log('Sending SOAP request to MIE...')
 
-    // Send SOAP request to QA endpoint
-    const response = await fetch('https://qa.mie.co.za/internal/services/epcvrequest/epcvrequest.asmx', {
+    // Send SOAP request to PRODUCTION endpoint
+    const response = await fetch('https://mie.co.za/internal/services/epcvrequest/epcvrequest.asmx', {
       method: 'POST',
       headers: {
         'Content-Type': 'text/xml; charset=utf-8',
