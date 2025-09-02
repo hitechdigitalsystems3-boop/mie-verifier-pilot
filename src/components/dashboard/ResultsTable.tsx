@@ -254,10 +254,97 @@ export const ResultsTable = () => {
 
                             {result.extended_info && (
                               <div>
-                                <h4 className="font-semibold">Extended Information</h4>
-                                <pre className="text-xs bg-muted p-2 rounded overflow-auto max-h-40">
-                                  {JSON.stringify(result.extended_info, null, 2)}
-                                </pre>
+                                <h4 className="font-semibold mb-3">Extended Information</h4>
+                                
+                                {/* Inquiry Key */}
+                                {result.extended_info.inquiry_key && (
+                                  <div className="mb-3">
+                                    <h5 className="text-sm font-medium text-muted-foreground mb-1">Inquiry Key</h5>
+                                    <p className="font-mono text-sm bg-muted px-2 py-1 rounded">
+                                      {result.extended_info.inquiry_key}
+                                    </p>
+                                  </div>
+                                )}
+
+                                {/* Raw Credential Details */}
+                                {result.extended_info.raw_credential && (
+                                  <div>
+                                    <h5 className="text-sm font-medium text-muted-foreground mb-2">Credential Details</h5>
+                                    <div className="bg-muted p-3 rounded space-y-2">
+                                      {(() => {
+                                        try {
+                                          const credential = typeof result.extended_info.raw_credential === 'string' 
+                                            ? JSON.parse(result.extended_info.raw_credential)
+                                            : result.extended_info.raw_credential;
+                                          
+                                          return (
+                                            <div className="grid grid-cols-1 gap-2 text-sm">
+                                              {credential.crd_type && (
+                                                <div className="flex justify-between">
+                                                  <span className="font-medium">Type:</span>
+                                                  <span className="font-mono">{credential.crd_type}</span>
+                                                </div>
+                                              )}
+                                              {credential.crd_resultcode && (
+                                                <div className="flex justify-between">
+                                                  <span className="font-medium">Result Code:</span>
+                                                  <span className="font-mono">{credential.crd_resultcode}</span>
+                                                </div>
+                                              )}
+                                              {credential.crd_resultdesc && (
+                                                <div className="flex justify-between">
+                                                  <span className="font-medium">Description:</span>
+                                                  <span>{credential.crd_resultdesc}</span>
+                                                </div>
+                                              )}
+                                              {credential.crd_supplier && (
+                                                <div className="flex justify-between">
+                                                  <span className="font-medium">Supplier:</span>
+                                                  <span>{credential.crd_supplier}</span>
+                                                </div>
+                                              )}
+                                              {credential.crd_risk && (
+                                                <div className="flex justify-between">
+                                                  <span className="font-medium">Risk:</span>
+                                                  <span>{credential.crd_risk}</span>
+                                                </div>
+                                              )}
+                                            </div>
+                                          );
+                                        } catch (e) {
+                                          // Fallback to raw display if parsing fails
+                                          return (
+                                            <pre className="text-xs overflow-auto max-h-32 whitespace-pre-wrap">
+                                              {typeof result.extended_info.raw_credential === 'string' 
+                                                ? result.extended_info.raw_credential 
+                                                : JSON.stringify(result.extended_info.raw_credential, null, 2)}
+                                            </pre>
+                                          );
+                                        }
+                                      })()}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {/* Raw JSON fallback for any other data */}
+                                {Object.keys(result.extended_info).some(key => 
+                                  key !== 'inquiry_key' && key !== 'raw_credential'
+                                ) && (
+                                  <div className="mt-3">
+                                    <h5 className="text-sm font-medium text-muted-foreground mb-2">Additional Data</h5>
+                                    <pre className="text-xs bg-muted p-2 rounded overflow-auto max-h-32">
+                                      {JSON.stringify(
+                                        Object.fromEntries(
+                                          Object.entries(result.extended_info).filter(([key]) => 
+                                            key !== 'inquiry_key' && key !== 'raw_credential'
+                                          )
+                                        ), 
+                                        null, 
+                                        2
+                                      )}
+                                    </pre>
+                                  </div>
+                                )}
                               </div>
                             )}
                           </div>
